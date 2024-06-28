@@ -19,5 +19,8 @@
     "react-dom": "18.3.1",
     "tailwindcss": "3.4.4",
     "v18": "^1.0.2"
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security"
   }
 }
