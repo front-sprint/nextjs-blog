@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import Head from "next/head";
 import { getAllPostIds, getPostData } from "../../lib/posts";
+import { DateTime } from "luxon";
 
 export async function getStaticPaths() {
   const paths = getAllPostIds();
@@ -20,13 +21,15 @@ export async function getStaticProps({ params }) {
 }
 
 const Post = ({ postData }) => {
+  console.log("Postdata : ", postData);
   return (
     <Layout>
-      {postData.title}
-      <br />
+      <Head>
+        <title>{postData.title}</title>
+      </Head>
       {postData.id}
       <br />
-      {postData.date}
+      {DateTime.fromISO(postData.date).toFormat("MMMM d, yyyy")}
       <br />
       <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </Layout>

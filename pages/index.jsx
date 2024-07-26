@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "@/components/Layout";
 import { getSortedPostsData } from "@/lib/posts";
+import Link from "next/link";
+import { DateTime } from "luxon";
 // import { useEffect, useState } from "react";
 
 // SSR (Server Side Rendering)
@@ -59,11 +61,9 @@ export default function Home({ allPostsData }) {
         <ul className="p-0 m-0">
           {allPostsData.map(({ id, date, title }) => (
             <li className="mx-0 mt-0 mb-5" key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>{title}</Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small>{DateTime.fromISO(date).toFormat("MMMM d, yyyy")}</small>
             </li>
           ))}
         </ul>
