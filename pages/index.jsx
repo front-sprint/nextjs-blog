@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout, { siteTitle } from "@/components/Layout";
-// import { getSortedPostsData } from "@/lib/posts";
-import { useEffect, useState } from "react";
+import { getSortedPostsData } from "@/lib/posts";
+// import { useEffect, useState } from "react";
 
 // SSR (Server Side Rendering)
 // export async function getServerSideProps() {
@@ -14,26 +14,26 @@ import { useEffect, useState } from "react";
 // }
 
 // SSG (Static Site Generate)
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData();
-//   return {
-//     props: {
-//       allPostsData,
-//     },
-//   };
-// }
-
-// SSG (Static Site Generate) - Local API
 export async function getStaticProps() {
-  const response = await fetch("http://localhost:3000/api/posts");
-  const json = await response.json();
-
+  const allPostsData = getSortedPostsData();
   return {
     props: {
-      allPostsData: json.allPostsData,
+      allPostsData,
     },
   };
 }
+
+// SSG (Static Site Generate) - Local API
+// export async function getStaticProps() {
+//   const response = await fetch("http://localhost:3000/api/posts");
+//   const json = await response.json();
+
+//   return {
+//     props: {
+//       allPostsData: json.allPostsData,
+//     },
+//   };
+// }
 
 export default function Home({ allPostsData }) {
   // const [allPostsData, setAllPostsData] = useState([]);
@@ -56,9 +56,9 @@ export default function Home({ allPostsData }) {
       </section>
       <section className="text-[1.2rem] leading-normal pt-px">
         <h2 className="text-2xl leading-[1.4] mx-0 my-4">Blog</h2>
-        <ul className="m-0 p-0">
+        <ul className="p-0 m-0">
           {allPostsData.map(({ id, date, title }) => (
-            <li className="mt-0 mb-5 mx-0" key={id}>
+            <li className="mx-0 mt-0 mb-5" key={id}>
               {title}
               <br />
               {id}

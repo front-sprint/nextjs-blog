@@ -2,12 +2,12 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-const name = "Taekwan Kim";
+const name = "Neowiz";
 export const siteTitle = "Next.js Sample Website";
 
 export default function Layout({ children, home }) {
   return (
-    <div className="max-w-xl mt-12 mb-24 mx-auto px-4 py-0">
+    <div className="max-w-xl px-4 py-0 mx-auto mt-12 mb-24">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -60,7 +60,7 @@ export default function Layout({ children, home }) {
       </header>
       <main>{children}</main>
       {!home && (
-        <div className="mt-12 mb-0 mx-0">
+        <div className="mx-0 mt-12 mb-0">
           <Link href="/">← Back to home</Link>
         </div>
       )}
