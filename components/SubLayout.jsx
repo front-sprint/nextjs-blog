@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 const SubLayout = ({ children }) => {
   return (
     <div>
       <div>{children}</div>
-      <button>SubLayout : Back to Home</button>
+      <Link href={"/"}> Back to Home</Link>
     </div>
   );
 };

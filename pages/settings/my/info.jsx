@@ -21,7 +21,7 @@ const MyInfo = () => {
       <button
         onClick={() => {
           alert("edit");
-          setClicked(true);
+          setClicked(true); // true로 바뀌지만 페이지가 새로고침되어 false로 초기화됨
           location.replace("/settings/my/info?status=editing");
         }}
       >
@@ -31,7 +31,7 @@ const MyInfo = () => {
       <button
         onClick={() => {
           alert("edit");
-          setClicked(true);
+          setClicked(true); // rerendering이 되지 않기 때문에 true가 유지됨
           router.push("/settings/my/info?status=editing");
         }}
       >
